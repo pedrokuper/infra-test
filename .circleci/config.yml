@@ -7,12 +7,12 @@ version: 2.1
 jobs:
   deploy-prod:
     docker:
-      - image: cimg/node:18.14.0
+      - image: cimg/node:14.18.0
     working_directory: ~/ronaenserie
     steps:
       - add_ssh_keys:
           fingerprints:
-            - ""
+            - "93:93:f3:33:3b:27:37:9f:02:10:df:53:40:1e:84:8f"
       - checkout
       - run:
           name: Add IP to known_hosts
