@@ -10,8 +10,6 @@ RUN apk update && apk upgrade && \
 RUN npm config set unsafe-perm true
 RUN npm install 
 
-RUN npm install -g pm2 --silent
-
 COPY . .
 RUN npm run build
 EXPOSE 3000
