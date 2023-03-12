@@ -8,7 +8,7 @@ jobs:
   deploy-prod:
     docker:
       - image: cimg/node:14.18.0
-    working_directory: ~/ronaenserie
+    working_directory: ~/infra-test
     steps:
       - add_ssh_keys:
           fingerprints:
@@ -18,7 +18,7 @@ jobs:
           name: Add IP to known_hosts
           command: ssh-keyscan $DEPLOY_HOST >> ~/.ssh/known_hosts
       - deploy:
-          command: ssh -o "StrictHostKeyChecking no" ubuntu@$DEPLOY_HOST -y "cd ~/ronaenserie;git stash;git checkout main; git pull origin main; sudo docker-compose -f docker-compose-prod.yml up --build -d; sudo docker system prune -f";
+          command: ssh -o "StrictHostKeyChecking no" ubuntu@$DEPLOY_HOST -y "cd ~/infra-test;git stash;git checkout main; git pull origin main; sudo docker-compose -f docker-compose-prod.yml up --build -d; sudo docker system prune -f";
 
 workflows:
   build-deploy:

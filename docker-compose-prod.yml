@@ -2,12 +2,12 @@ version: "2.1"
 
 services:
   landings:
-    container_name: landings
-    image: landings
+    container_name: infra-test
+    image: infra-test
     restart: always
     build: .
     environment:
-      NODE_ENV: dev
+      NODE_ENV: production
     ports:
       - "3000:3000"
     logging:
